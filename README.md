@@ -25,9 +25,6 @@
   
 [我的博客](http://www.yang-pig.com/article/54.html) [演示地址](http://tm.yang-pig.com:8080/ssm_test/)
 
-&ensp;&ensp;&ensp;请不要插入非法数据，谢谢
-<font color=#0099ff size=5 face="黑体">color=#0099ff size=5 face="黑体"</font>
-  
 #### 存在的问题：
 
   &ensp;&ensp;&ensp;目前为1.0版本，是本人利用休息时间开发编辑的，所以并没有做到面面俱到，存在一些已知问题。
