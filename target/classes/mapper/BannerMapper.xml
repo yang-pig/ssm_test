@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.ssmtest.dao.BannerDao">
+
+    <select id="getBannerById" resultType="com.ssmtest.entity.Banner" parameterType="long">
+        SELECT
+          *
+        FROM
+          tpt_banner
+        WHERE
+          id = #{id}
+    </select>
+
+
+    <update id="update" parameterType="com.ssmtest.entity.Banner" >
+        update tpt_banner
+        <set>
+            <if test="apic != null">apic=#{apic},</if>
+            <if test="atitle != null">atitle=#{atitle},</if>
+            <if test="alink != null">alink=#{alink},</if>
+
+            <if test="bpic != null">bpic=#{bpic},</if>
+            <if test="btitle != null">btitle=#{btitle},</if>
+            <if test="blink != null">blink=#{blink},</if>
+
+            <if test="bpic != null">cpic=#{cpic},</if>
+            <if test="ctitle != null">ctitle=#{ctitle},</if>
+            <if test="clink != null">clink=#{clink}</if>
+
+
+
+        </set>
+        where
+        id=#{id}
+
+    </update>
+
+
+
+
+</mapper>

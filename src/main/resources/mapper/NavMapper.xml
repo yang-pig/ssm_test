@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.ssmtest.dao.NavDao">
+
+    <select id="queryNavResult" resultType="com.ssmtest.entity.Nav">
+        SELECT
+              *
+        FROM
+              tpt_navtop
+
+        <where>
+            <if test="tid == 0">
+                tid = 0
+            </if>
+            <if test="tid != 0">
+                AND tid != 0
+            </if>
+        </where>
+        ORDER BY
+                sort ASC
+
+    </select>
+
+    <select id="getNavById" resultType="com.ssmtest.entity.Nav" parameterType="long">
+        SELECT
+          *
+        FROM
+          tpt_navtop
+        WHERE
+          id = #{id}
+
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO
+          tpt_navtop(tid,link,sort,name,time,blank,status)
+        VALUES
+          (#{tid},#{link},#{sort},#{name},#{time},#{blank},#{status})
+    </insert>
+
+
+    <update id="update" parameterType="com.ssmtest.entity.Nav">
+        update tpt_navtop
+        <set>
+            <if test="tid != null">tid=#{tid},</if>
+            <if test="link != null">link=#{link},</if>
+            <if test="sort != null">sort=#{sort},</if>
+            <if test="name != null">name=#{name},</if>
+            <if test="time != null">time=#{time},</if>
+            <if test="blank != null">blank=#{blank},</if>
+            <if test="status != null">status=#{status},</if>
+        </set>
+        where
+            id=#{id}
+
+    </update>
+
+    <delete id="del">
+        DELETE FROM
+            tpt_navtop
+        WHERE
+            id= #{id}
+    </delete>
+
+</mapper>

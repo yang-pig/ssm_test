@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.ssmtest.dao.ArticleDao">
+
+
+    <select id="queryArticleResult" resultType="com.ssmtest.entity.Article">
+        SELECT
+          *
+        FROM tpt_article
+        ORDER BY id DESC
+    </select>
+
+
+    <select id="getAll" resultType="com.ssmtest.entity.Article">
+        SELECT
+        *
+        FROM tpt_article
+        ORDER BY id
+    </select>
+
+
+    <select id="getArticleById" resultType="com.ssmtest.entity.Article" parameterType="long">
+        SELECT
+        *
+        FROM
+        tpt_article
+        WHERE
+        id = #{id}
+
+    </select>
+
+
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO
+        tpt_article(tid,status,title,source,time,author,commend,choice,pic,keywords,description,content)
+        VALUES
+        (#{tid},#{status},#{title},#{source},#{time},#{author},#{commend},#{choice},#{pic},#{keywords},#{description},#{content})
+    </insert>
+
+
+    <update id="update" parameterType="com.ssmtest.entity.Nav">
+        update tpt_article
+        <set>
+            <if test="tid != null">tid=#{tid},</if>
+            <if test="status != null">status=#{status},</if>
+            <if test="title != null">title=#{title},</if>
+            <if test="source != null">source=#{source},</if>
+            <if test="time != null">time=#{time},</if>
+            <if test="author != null">author=#{author},</if>
+            <if test="commend != null">commend=#{commend},</if>
+            <if test="choice != null">choice=#{choice},</if>
+            <if test="pic != null">pic=#{pic},</if>
+            <if test="keywords != null">keywords=#{keywords},</if>
+            <if test="description != null">description=#{description},</if>
+            <if test="content != null">content=#{content}</if>
+        </set>
+        where
+        id=#{id}
+
+    </update>
+
+
+    <delete id="del">
+        DELETE FROM
+          tpt_article
+        WHERE
+          id= #{id}
+    </delete>
+
+    <delete id="dels" parameterType="String">
+        DELETE FROM
+          tpt_article
+        WHERE
+          id
+        IN
+        <foreach collection="array" item="id" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.ssmtest.dao.CategoryDao">
+    <select id="queryCategoryResult" resultType="com.ssmtest.entity.Category">
+        SELECT
+          *
+        FROM
+          tpt_category
+
+        <where>
+            <if test="tid == 0 and type == 0">
+                tid = 0
+            </if>
+            <if test="tid != 0">
+                AND tid != 0
+            </if>
+            <if test="type">
+                AND type = #{type}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getCategoryById" resultType="com.ssmtest.entity.Category" parameterType="long">
+        SELECT
+          *
+        FROM
+          tpt_category
+        WHERE
+          id = #{id}
+
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO
+        tpt_category(tid,name,type,pic,time,keywords,description)
+        VALUES
+        (#{tid},#{name},#{type},#{pic},#{time},#{keywords},#{description})
+    </insert>
+
+
+
+    <update id="update" parameterType="com.ssmtest.entity.Category">
+        update tpt_category
+        <set>
+            <if test="tid != null">tid=#{tid},</if>
+            <if test="name != null">name=#{name},</if>
+            <if test="type != null">type=#{type},</if>
+            <if test="pic != null">pic=#{pic},</if>
+            <if test="keywords != null">keywords=#{keywords},</if>
+            <if test="description != null">description=#{description}</if>
+        </set>
+        where
+        id=#{id}
+
+    </update>
+
+
+    <delete id="del">
+        DELETE FROM
+          tpt_category
+        WHERE
+        id= #{id}
+    </delete>
+
+
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.ssmtest.dao.ConfDao">
+
+    <select id="getConfById" resultType="com.ssmtest.entity.Conf" parameterType="long">
+        SELECT
+          *
+        FROM
+          tpt_conf
+        WHERE
+        id = #{id}
+    </select>
+
+
+
+    <update id="update" parameterType="com.ssmtest.entity.Conf" >
+        update tpt_conf
+        <set>
+            <if test="author != null">author=#{author},</if>
+            <if test="logo != null">logo=#{logo},</if>
+            <if test="qq != null">qq=#{qq},</if>
+            <if test="domain != null">domain=#{domain},</if>
+            <if test="title != null">title=#{title},</if>
+            <if test="record != null">record=#{record},</if>
+            <if test="keywords != null">keywords=#{keywords},</if>
+            <if test="description != null">description=#{description}</if>
+        </set>
+        where
+        id=#{id}
+
+    </update>
+
+
+
+
+
+</mapper>
