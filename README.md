@@ -24,9 +24,7 @@
 
 >>tomcat版本：tomcat7.0.90
   
-[我的博客](http://www.yang-pig.com/article/54.html)
-
-[演示地址](http://tm.yang-pig.com:8080/ssm_test/)
+[我的博客](http://www.yang-pig.com/article/54.html) [演示地址](http://tm.yang-pig.com:8080/ssm_test/)
 
  请不要插入非法数据，谢谢
   
