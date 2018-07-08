@@ -23,7 +23,7 @@
 
 &ensp;&ensp;&ensp;tomcat版本：tomcat7.0.90
   
-[我的博客](http://www.yang-pig.com/article/54.html) [演示地址](http://tm.yang-pig.com:8080/ssm_test/)
+&ensp;&ensp;&ensp;[我的博客](http://www.yang-pig.com/article/54.html) &ensp;&ensp;&ensp;[演示地址](http://tm.yang-pig.com:8080/ssm_test/)
 
 #### 存在的问题：
 
